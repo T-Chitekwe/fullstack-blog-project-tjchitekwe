@@ -12,7 +12,7 @@ function Posts() {
 
   const fetchPosts = async () => {
     try {
-      const res = await api.get("/posts");
+      const res = await api.get("api/posts");
       setPosts(res.data);
     } catch (err) {
       console.log(err);
@@ -34,7 +34,7 @@ function Posts() {
     e.preventDefault();
 
     try {
-      await api.post("/posts", form);
+      await api.post("/api/posts", form);
 
       setForm({
         title: "",
