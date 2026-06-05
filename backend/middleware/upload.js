@@ -1,24 +1,21 @@
 const multer = require("multer");
+const cloudinary = require("cloudinary").v2;
+const multerStorageCloudinary = require("multer-storage-cloudinary");
 
-const { CloudinaryStorage } = require("multer-storage-cloudinary");
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
-const cloudinary = require("../config/cloudinary");
-
-const storage = new CloudinaryStorage({
-  cloudinary,
-  params: {
-    folder: "insights-blog",
-
-    // ✅ FIX: required for modern cloudinary compatibility
-    resource_type: "image",
-
-    // keep formats safe
-    allowed_formats: ["jpg", "jpeg", "png"]
-  }
+const storage = multerStorageCloudinary({
+  cloudinary: cloudinary,
+  folder: "blog-posts",
+  allowedFormats: ["jpg", "png", "jpeg"],
 });
 
 const upload = multer({
-  storage
+  storage,
 });
 
 module.exports = upload;

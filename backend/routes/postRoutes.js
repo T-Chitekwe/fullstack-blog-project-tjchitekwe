@@ -8,12 +8,15 @@ const {
   updatePost,
   deletePost,
   toggleLike,
-  addComment, // 💬 ADDED
+  addComment,
 } = require("../controllers/postController");
 
 const authMiddleware = require("../middleware/authMiddleware");
 const upload = require("../middleware/upload");
 
+// =========================
+// POSTS
+// =========================
 router.get("/", getPosts);
 router.get("/:id", getPostById);
 
@@ -28,10 +31,18 @@ router.put("/:id", authMiddleware, updatePost);
 
 router.delete("/:id", authMiddleware, deletePost);
 
-// ❤️ LIKE ROUTE
+// =========================
+// ❤️ LIKE
+// =========================
 router.put("/:id/like", authMiddleware, toggleLike);
 
-// 💬 COMMENT ROUTE (ADDED)
-router.post("/:id/comment", authMiddleware, addComment);
+// =========================
+// 💬 COMMENT
+// =========================
+router.post(
+  "/:id/comment",
+  authMiddleware,
+  addComment
+);
 
 module.exports = router;
