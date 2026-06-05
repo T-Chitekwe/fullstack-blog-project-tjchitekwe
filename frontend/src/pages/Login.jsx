@@ -25,7 +25,7 @@ export default function Login() {
     try {
       const response =
       await axios.post(
-        "https://fullstack-blog-project-tjchitekwe.onrender.com",
+        "https://fullstack-blog-project-tjchitekwe.onrender.com/api/auth/login",
         formData
       );
 

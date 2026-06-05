@@ -23,7 +23,7 @@ export default function Signup() {
 
     try {
       const response = await axios.post(
-        "https://fullstack-blog-project-tjchitekwe.onrender.com",
+        "https://fullstack-blog-project-tjchitekwe.onrender.com/api/auth/signup",
         formData
       );
 
