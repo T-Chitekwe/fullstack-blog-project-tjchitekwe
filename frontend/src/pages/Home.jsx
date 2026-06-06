@@ -16,7 +16,7 @@ export default function Home() {
     try {
 
       const response =
-        await api.get("/api/posts");
+        await api.get("/posts");
 
       setPosts(response.data);
 

@@ -34,7 +34,7 @@ function Posts() {
     e.preventDefault();
 
     try {
-      await api.post("/api/posts", form);
+      await api.post("/posts", form);
 
       setForm({
         title: "",
