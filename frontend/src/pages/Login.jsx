@@ -22,7 +22,6 @@ e.target.value
 const handleLogin = async (e) => {
 e.preventDefault();
 
-```
 try {
   const response =
   await axios.post(
@@ -45,14 +44,13 @@ try {
     "Login failed"
   );
 }
-```
 
 };
 
 return (
-<> <nav className="navbar">
+<> 
+<nav className="navbar">
 
-```
     <Link
       to="/"
       className="logo-wrapper-link"
