@@ -11,10 +11,13 @@ cloudinary.config({
 
 // Storage config
 const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
+  cloudinary,
   params: {
     folder: "blog-posts",
     allowed_formats: ["jpg", "jpeg", "png"],
+
+    // IMPORTANT FIX (Render + latest package compatibility)
+    resource_type: "image",
   },
 });
 
