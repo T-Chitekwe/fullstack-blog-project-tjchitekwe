@@ -1,6 +1,6 @@
 const multer = require("multer");
 const cloudinary = require("cloudinary").v2;
-const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const multerStorageCloudinary = require("multer-storage-cloudinary");
 
 // Cloudinary config
 cloudinary.config({
@@ -9,8 +9,8 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Storage config
-const storage = new CloudinaryStorage({
+// Storage config (IMPORTANT FIX)
+const storage = new multerStorageCloudinary({
   cloudinary: cloudinary,
   params: {
     folder: "blog-posts",
