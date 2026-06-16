@@ -9,8 +9,8 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Storage config (IMPORTANT FIX)
-const storage = new multerStorageCloudinary({
+// Storage config (FIXED)
+const storage = multerStorageCloudinary({
   cloudinary: cloudinary,
   params: {
     folder: "blog-posts",
