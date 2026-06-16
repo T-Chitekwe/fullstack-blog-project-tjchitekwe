@@ -9,16 +9,16 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Storage config (FIXED)
-const storage = new multerStorageCloudinary({
-  cloudinary,
-  params: {
-    folder: "blog-posts",
-    allowed_formats: ["jpg", "jpeg", "png"]
-  }
+// Storage config
+const storage = multerStorageCloudinary({
+  cloudinary: cloudinary,
+  folder: "blog-posts",
+  allowedFormats: ["jpg", "jpeg", "png"],
 });
 
 // Multer setup
-const upload = multer({ storage });
+const upload = multer({
+  storage,
+});
 
 module.exports = upload;
