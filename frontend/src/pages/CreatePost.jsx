@@ -46,7 +46,7 @@ export default function CreatePost() {
         data.append("image", image);
       }
 
-      await api.post("/api/posts", data, {
+      await api.post("/posts", data, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data"
