@@ -166,6 +166,7 @@ button:hover,
 }
 
 .post-card small {
+  display: block;
   color: #888;
 }
 
