@@ -11,6 +11,8 @@ import {
 
 import api from "../api";
 
+import LogoutButton from "../components/LogoutButton";
+
 export default function EditPost() {
 
   const { id } = useParams();
