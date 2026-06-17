@@ -52,7 +52,7 @@ const createPost = async (req, res) => {
   try {
     const { title, subtitle, content } = req.body;
 
-    const imageUrl = req.file ? req.file.path : "";
+    const imageUrl = req.file ? req.file.secure_url : "";
 
     const post = new BlogPost({
       title,
