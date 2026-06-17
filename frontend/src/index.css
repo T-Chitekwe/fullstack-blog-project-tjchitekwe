@@ -852,6 +852,7 @@ button:hover,
   font-size: 14px;
   transition: 0.2s;
   margin-bottom: 15px;
+  color: #222;
 }
 
 .like-btn:hover {
