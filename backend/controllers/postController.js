@@ -1,3 +1,5 @@
+const mongoose = require("mongoose");
+
 const BlogPost = require("../models/BlogPost");
 
 // 🔔 NEW: notification model added (SAFE ADDITION)
@@ -52,7 +54,7 @@ const createPost = async (req, res) => {
   try {
     const { title, subtitle, content } = req.body;
 
-    const imageUrl = req.file ? req.file.secure_url : "";
+    const imageUrl = req.file ? req.file.path : "";
 
     const post = new BlogPost({
       title,
@@ -157,7 +159,7 @@ const toggleLike = async (req, res) => {
       });
     }
 
-    const userId = req.user.id;
+    const userId = new mongoose.Types.ObjectId(req.user.id);
 
     const alreadyLiked = post.likes.includes(userId);
 
@@ -206,6 +208,8 @@ const addComment = async (req, res) => {
       return res.status(404).json({
         message: "Post not found",
       });
+    const commentUserId = new mongoose.Types.ObjectId(req.user.id);
+    post.comments.push({ user: commentUserId, text });
     }
 
     const { text } = req.body;
