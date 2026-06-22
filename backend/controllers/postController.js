@@ -173,12 +173,12 @@ const toggleLike = async (req, res) => {
       // 🔔 NOTIFICATION ADDED (SAFE)
       if (post.author.toString() !== userId) {
         await Notification.create({
-          user: post.author,     // receiver
-          sender: userId,        // who liked
-          type: "like",
-          post: post._id,
-          message: "Someone liked your post",
-        });
+  user: post.author,
+  from: userId,
+  type: "like",
+  post: post._id,
+  message: "Someone liked your post",
+});
       }
     }
 
@@ -230,12 +230,12 @@ const addComment = async (req, res) => {
     // 🔔 NOTIFICATION ADDED (SAFE)
     if (post.author.toString() !== req.user.id) {
       await Notification.create({
-        user: post.author,
-        sender: req.user.id,
-        type: "comment",
-        post: post._id,
-        message: "Someone commented on your post",
-      });
+  user: post.author,
+  from: req.user.id,
+  type: "comment",
+  post: post._id,
+  message: "Someone commented on your post",
+});
     }
 
     const updated = await BlogPost.findById(req.params.id)
